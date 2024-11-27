@@ -1,6 +1,7 @@
+streamlit>=1.25.0
 pandas==1.5.3
 plotly>=5.0.0
-sqlalchemy>=2.0.0
+sqlalchemy==1.4.49
 pandasai==1.4.10
 kaggle>=1.5.12
 openai>=0.27.0
