@@ -2,7 +2,7 @@ streamlit
 pandas
 plotly
 sqlalchemy
-pandasai
+pandasai==1.4.10
 kaggle
 openai
 PyYAML
