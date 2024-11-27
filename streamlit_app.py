@@ -27,7 +27,8 @@ st.title("Streamlit Data Science Web App")
 
 # Sidebar for Navigation
 st.sidebar.title("Navigation")
-options = st.sidebar.radio("Select an option:", ["Upload CSV", "Query Database", "Kaggle Datasets"])
+options = st.sidebar.radio("Select an option:", ["Upload CSV", "Query Database"#, "Kaggle Datasets"
+                                                ])
 
 # Shared AI Question Prompt Functionality
 def ai_question_prompt(unique_key):
