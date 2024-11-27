@@ -5,7 +5,7 @@ import sqlalchemy
 import os
 from pandasai import PandasAI
 from pandasai.llm import OpenAI
-from kaggle.api.kaggle_api_extended import KaggleApi
+#from kaggle.api.kaggle_api_extended import KaggleApi
 
 # Initialize global variables
 #global df_global
