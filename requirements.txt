@@ -5,3 +5,4 @@ sqlalchemy
 pandasai
 kaggle
 openai
+PyYAML
