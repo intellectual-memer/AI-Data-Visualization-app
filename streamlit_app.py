@@ -9,11 +9,11 @@ from pandasai.llm import OpenAI
 #from kaggle.api.kaggle_api_extended import KaggleApi
 
 # Access secrets
-db_host = st.secrets["database"]["host"]
-db_port = st.secrets["database"]["port"]
-db_name = st.secrets["database"]["name"]
-db_user = st.secrets["database"]["user"]
-db_password = st.secrets["database"]["password"]
+# db_host = st.secrets["database"]["host"]
+# db_port = st.secrets["database"]["port"]
+# db_name = st.secrets["database"]["name"]
+# db_user = st.secrets["database"]["user"]
+# db_password = st.secrets["database"]["password"]
 
 # Create database connection
 # def get_connection():
@@ -27,7 +27,7 @@ db_password = st.secrets["database"]["password"]
 df_global = pd.DataFrame()
 openai_api_key = os.getenv('OPENAI_API_KEY')  # Ensure OpenAI API key is set
 #postgres_uri = os.getenv('POSTGRES_DATABASE_URI')  # Ensure PostgreSQL URI is set
-postgres_uri = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+#postgres_uri = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 pandas_ai = None
 
 # Initialize OpenAI for PandasAI
@@ -42,7 +42,7 @@ st.title("Streamlit Data Science Web App")
 
 # Sidebar for Navigation
 st.sidebar.title("Navigation")
-options = st.sidebar.radio("Select an option:", ["Upload CSV", "Query Database"#, "Kaggle Datasets"
+options = st.sidebar.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
 
 # Shared AI Question Prompt Functionality
@@ -123,49 +123,49 @@ if options == "Upload CSV":
     ai_question_prompt(unique_key="ai_question_input_csv")
 
 # ---- Query Database ----
-elif options == "Query Database":
-    st.header("Query PostgreSQL Database")
+# elif options == "Query Database":
+#     st.header("Query PostgreSQL Database")
     
-    # Use session state to maintain the query value
-    if 'query' not in st.session_state:
-        st.session_state.query = ""
+#     # Use session state to maintain the query value
+#     if 'query' not in st.session_state:
+#         st.session_state.query = ""
 
-    # Update the session state with the current input
-    query = st.text_area("Enter your SQL query:", value=st.session_state.query, key="query_input")
+#     # Update the session state with the current input
+#     query = st.text_area("Enter your SQL query:", value=st.session_state.query, key="query_input")
 
-    if st.button("Run Query"):
-        try:
-            if not postgres_uri:
-                st.error("PostgreSQL URI not configured! Set it in environment variables.")
-            else:
-                engine = sqlalchemy.create_engine(postgres_uri)
-                df_global = pd.read_sql(query, engine)
-                st.session_state["query"] = query  # Save the query
-                st.session_state["df_global"] = df_global  # Save the DataFrame
-                st.success("Query executed successfully!")
-                #st.dataframe(df_global.head())
-                st.session_state["df_global_head"] = df_global.head()  # Save the DataFrame
-                st.session_state["df_global_head"]
+#     if st.button("Run Query"):
+#         try:
+#             if not postgres_uri:
+#                 st.error("PostgreSQL URI not configured! Set it in environment variables.")
+#             else:
+#                 engine = sqlalchemy.create_engine(postgres_uri)
+#                 df_global = pd.read_sql(query, engine)
+#                 st.session_state["query"] = query  # Save the query
+#                 st.session_state["df_global"] = df_global  # Save the DataFrame
+#                 st.success("Query executed successfully!")
+#                 #st.dataframe(df_global.head())
+#                 st.session_state["df_global_head"] = df_global.head()  # Save the DataFrame
+#                 st.session_state["df_global_head"]
 
-                # # Store the query in session state
-                # st.session_state.query = query  # Ensure the query is stored after execution
+#                 # # Store the query in session state
+#                 # st.session_state.query = query  # Ensure the query is stored after execution
 
-                # Reinitialize PandasAI
-                if not df_global.empty and openai_api_key:
-                    pandas_ai = PandasAI(llm)
-                    st.info("PandasAI initialized for data insights.")
+#                 # Reinitialize PandasAI
+#                 if not df_global.empty and openai_api_key:
+#                     pandas_ai = PandasAI(llm)
+#                     st.info("PandasAI initialized for data insights.")
                     
-        except Exception as e:
-            st.error(f"Error executing query: {e}")
+#         except Exception as e:
+#             st.error(f"Error executing query: {e}")
 
-        # Check if data exists in session_state
-    if "df_global" in st.session_state:
-        df_global = st.session_state["df_global"]  # Retrieve saved DataFrame
+#         # Check if data exists in session_state
+#     if "df_global" in st.session_state:
+#         df_global = st.session_state["df_global"]  # Retrieve saved DataFrame
 
-        # Visualization
-        generate_visualizations()
-        # AI Question Prompt
-        ai_question_prompt(unique_key="ai_question_input_db")
+#         # Visualization
+#         generate_visualizations()
+#         # AI Question Prompt
+#         ai_question_prompt(unique_key="ai_question_input_db")
 
 # # ---- Kaggle Datasets ----
 # elif options == "Kaggle Datasets":
