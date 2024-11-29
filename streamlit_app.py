@@ -2,17 +2,32 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import sqlalchemy
+#from sqlalchemy import create_engine
 import os
 from pandasai import PandasAI
 from pandasai.llm import OpenAI
 #from kaggle.api.kaggle_api_extended import KaggleApi
+
+# Access secrets
+db_host = st.secrets["database"]["host"]
+db_port = st.secrets["database"]["port"]
+db_name = st.secrets["database"]["name"]
+db_user = st.secrets["database"]["user"]
+db_password = st.secrets["database"]["password"]
+
+# Create database connection
+# def get_connection():
+#     connection_string = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+#     engine = create_engine(connection_string)
+#     return engine
 
 # Initialize global variables
 #global df_global
 #global pandas_ai
 df_global = pd.DataFrame()
 openai_api_key = os.getenv('OPENAI_API_KEY')  # Ensure OpenAI API key is set
-postgres_uri = os.getenv('POSTGRES_DATABASE_URI')  # Ensure PostgreSQL URI is set
+#postgres_uri = os.getenv('POSTGRES_DATABASE_URI')  # Ensure PostgreSQL URI is set
+postgres_uri = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 pandas_ai = None
 
 # Initialize OpenAI for PandasAI
