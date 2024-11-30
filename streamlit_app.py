@@ -213,10 +213,31 @@ if options == "Upload CSV":
 #     # AI Question Prompt
 #     ai_question_prompt(unique_key="ai_question_input_kaggle")
 
-# Footer
+# Add custom CSS to position the footer
+st.markdown(
+    """
+    <style>
+        /* Push sidebar footer to the bottom */
+        [data-testid="stSidebar"] > div:first-child {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        [data-testid="stSidebar"] > div:first-child > div:last-child {
+            margin-top: auto;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# # Add the footer content to the sidebar
+# st.sidebar.markdown("### Streamlit App Footer")
+# st.sidebar.text("Some additional information here.")
+
+# Add the footer content to the sidebar
 st.sidebar.markdown("---")
-# Add empty space to push the footer content down
-for _ in range(100):  # Adjust the range to control the spacing
-    st.sidebar.empty()
 st.sidebar.text("AI Data Visualization App")
 st.sidebar.text("Powered by PandasAI, OpenAI, and Plotly")
