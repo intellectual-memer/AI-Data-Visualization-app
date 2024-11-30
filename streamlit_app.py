@@ -56,30 +56,30 @@ with top_section:
     options = st.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
 
-# Add custom CSS to position the footer
-st.markdown(
-    """
-    <style>
-        /* Use flex layout for the sidebar */
-        [data-testid="stSidebar"] > div:first-child {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
+# # Add custom CSS to position the footer
+# st.markdown(
+#     """
+#     <style>
+#         /* Use flex layout for the sidebar */
+#         [data-testid="stSidebar"] > div:first-child {
+#             display: flex;
+#             flex-direction: column;
+#             justify-content: space-between;
+#             height: 100%;
+#         }
 
-        /* Ensure the footer stays at the bottom */
-        .sidebar-footer {
-            margin-top: auto;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            color: gray;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+#         /* Ensure the footer stays at the bottom */
+#         .sidebar-footer {
+#             margin-top: auto;
+#             padding: 10px 0;
+#             text-align: center;
+#             font-size: 0.9rem;
+#             color: gray;
+#         }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
 
 # # Add the footer content to the sidebar
 # st.sidebar.markdown("### Streamlit App Footer")
