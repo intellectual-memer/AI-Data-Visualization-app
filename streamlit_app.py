@@ -40,10 +40,17 @@ else:
 # Streamlit App Title
 st.title("AI Data Visualization")
 
-# Sidebar for Navigation
-st.sidebar.title("Database Type")
-options = st.sidebar.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
+# # Sidebar for Navigation
+# st.sidebar.title("Database Type")
+# options = st.sidebar.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
+#                                                 ])
+
+# Sidebar content at the top (data input section)
+with st.sidebar:
+    st.title("Database Input Type")
+    st.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
+    st.file_uploader("Upload a file")
 
 # Shared AI Question Prompt Functionality
 def ai_question_prompt(unique_key):
@@ -217,16 +224,21 @@ if options == "Upload CSV":
 st.markdown(
     """
     <style>
-        /* Push sidebar footer to the bottom */
+        /* Use flex layout for the sidebar */
         [data-testid="stSidebar"] > div:first-child {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             height: 100%;
         }
-        [data-testid="stSidebar"] > div:first-child > div:last-child {
+
+        /* Ensure the footer stays at the bottom */
+        .sidebar-footer {
             margin-top: auto;
             padding: 10px 0;
             text-align: center;
+            font-size: 0.9rem;
+            color: gray;
         }
     </style>
     """,
@@ -238,6 +250,10 @@ st.markdown(
 # st.sidebar.text("Some additional information here.")
 
 # Add the footer content to the sidebar
-st.sidebar.markdown("---")
-st.sidebar.text("AI Data Visualization App")
-st.sidebar.text("Powered by PandasAI, OpenAI, and Plotly")
+# st.sidebar.markdown("---")
+# st.sidebar.text("AI Data Visualization App")
+# st.sidebar.text("Powered by PandasAI, OpenAI, and Plotly")
+
+# Footer content at the bottom of the sidebar
+with st.sidebar:
+    st.markdown('<div class="sidebar-footer">AI Data Visualization App<br>Powered by PandasAI, OpenAI, and Plotly</div>', unsafe_allow_html=True)
