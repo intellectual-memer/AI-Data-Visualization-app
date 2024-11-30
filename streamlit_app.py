@@ -45,11 +45,17 @@ st.title("AI Data Visualization")
 # options = st.sidebar.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
 #                                                 ])
 
-# Sidebar content at the top (data input section)
+# Sidebar: Top Section for Input Content
 with st.sidebar:
+    top_section = st.container()  # Container for the input section
+    bottom_section = st.container()  # Container for the footer section
+
+# Sidebar content at the top (data input section), Populate the top section
+with top_section:
     st.title("Database Input Type")
     options = st.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
+
 # Add custom CSS to position the footer
 st.markdown(
     """
@@ -84,8 +90,8 @@ st.markdown(
 # st.sidebar.text("AI Data Visualization App")
 # st.sidebar.text("Powered by PandasAI, OpenAI, and Plotly")
 
-# Footer content at the bottom of the sidebar
-with st.sidebar:
+# Footer content at the bottom of the sidebar, Populate the bottom section
+with bottom_section:
     st.markdown('<div class="sidebar-footer">AI Data Visualization App<br>Powered by PandasAI, OpenAI, and Plotly</div>', unsafe_allow_html=True)
 
 # Shared AI Question Prompt Functionality
