@@ -50,7 +50,6 @@ with st.sidebar:
     st.title("Database Input Type")
     options = st.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
-    st.file_uploader("Upload a file")
 
 # Shared AI Question Prompt Functionality
 def ai_question_prompt(unique_key):
