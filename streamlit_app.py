@@ -41,7 +41,7 @@ else:
 st.title("AI Data Visualization")
 
 # Sidebar for Navigation
-st.sidebar.title("Navigation")
+st.sidebar.title("Database Type")
 options = st.sidebar.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
 
@@ -215,5 +215,8 @@ if options == "Upload CSV":
 
 # Footer
 st.sidebar.markdown("---")
+# Add empty space to push the footer content down
+for _ in range(10):  # Adjust the range to control the spacing
+    st.sidebar.empty()
 st.sidebar.text("AI Data Visualization App")
 st.sidebar.text("Powered by PandasAI, OpenAI, and Plotly")
