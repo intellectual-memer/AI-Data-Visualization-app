@@ -48,7 +48,7 @@ st.title("AI Data Visualization")
 # Sidebar content at the top (data input section)
 with st.sidebar:
     st.title("Database Input Type")
-    st.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
+    options = st.radio("Select an option:", ["Upload CSV"#, "Query Database"#, "Kaggle Datasets"
                                                 ])
     st.file_uploader("Upload a file")
 
