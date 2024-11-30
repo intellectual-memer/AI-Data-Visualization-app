@@ -38,7 +38,7 @@ else:
     st.error("OpenAI API key not found! Please set it in your environment variables.")
 
 # Streamlit App Title
-st.title("Streamlit Data Science Web App")
+st.title("AI Data Visualization")
 
 # Sidebar for Navigation
 st.sidebar.title("Navigation")
