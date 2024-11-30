@@ -216,7 +216,7 @@ if options == "Upload CSV":
 # Footer
 st.sidebar.markdown("---")
 # Add empty space to push the footer content down
-for _ in range(30):  # Adjust the range to control the spacing
+for _ in range(100):  # Adjust the range to control the spacing
     st.sidebar.empty()
 st.sidebar.text("AI Data Visualization App")
 st.sidebar.text("Powered by PandasAI, OpenAI, and Plotly")
